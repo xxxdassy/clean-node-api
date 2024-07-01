@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test:staged": "jest",
-    "lint": "eslint src --ext .ts,.tsx --fix"
+    "test:staged": "jest --passWithNoTests",
+    "lint": "eslint src --ext .ts,.tsx --fix",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
