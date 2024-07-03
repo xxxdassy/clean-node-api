@@ -1,4 +1,4 @@
-import ServerError from '../errors/server-error'
+import { ServerError } from '../errors/server-error'
 import { httpResponse } from '../protocols/http'
 
 // syntax suggar
