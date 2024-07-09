@@ -1,8 +1,8 @@
 import {
   Controller,
   EmailValidator,
-  httpRequest,
-  httpResponse,
+  HttpRequest,
+  HttpResponse,
   AddAccount,
 } from './signup-protocols'
 
@@ -18,7 +18,7 @@ class SignUpController implements Controller {
     this.addAccount = addAccount
   }
 
-  async handle(httpRequest: httpRequest): Promise<httpResponse> {
+  async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const requiredFields = [
         'name',
