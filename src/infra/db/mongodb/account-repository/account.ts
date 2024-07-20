@@ -11,13 +11,6 @@ export class AccountMongoRepository implements AddAccountRepository {
       _id: result.insertedId,
     })
 
-    const { _id, name, email, password } = account
-
-    return {
-      id: _id.toString(),
-      name,
-      email,
-      password,
-    }
+    return MongoHelper.map(account)
   }
 }
