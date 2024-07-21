@@ -1,5 +1,5 @@
 import { InvalidParamError, MissingParamError, ServerError } from '../../errors'
-import SignUpController from './signup'
+import { SignUpController } from './signup'
 
 import {
   AddAccount,
