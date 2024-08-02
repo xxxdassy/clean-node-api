@@ -31,6 +31,15 @@ const makeController = () => {
   return new ControllerStub()
 }
 
+const makeFakeRequest = (): HttpRequest => ({
+  body: {
+    name: 'valid_name',
+    email: 'valid_email@example.com',
+    password: 'valid_password',
+    passwordConfirmation: 'valid_password',
+  },
+})
+
 interface SutTypes {
   sut: LogControllerDecorator
   controllerStub: Controller
@@ -54,14 +63,7 @@ describe('Log Controller Decorator', () => {
 
     const handleSpy = jest.spyOn(controllerStub, 'handle')
 
-    const httpRequest = {
-      body: {
-        name: 'valid_name',
-        email: 'valid_email@example.com',
-        password: 'valid_password',
-        passwordConfirmation: 'valid_password',
-      },
-    }
+    const httpRequest = makeFakeRequest()
 
     await sut.handle(httpRequest)
 
@@ -71,14 +73,7 @@ describe('Log Controller Decorator', () => {
   test('Should return the same result of the controller', async () => {
     const { sut } = makeSut()
 
-    const httpRequest = {
-      body: {
-        name: 'valid_name',
-        email: 'valid_email@example.com',
-        password: 'valid_password',
-        passwordConfirmation: 'valid_password',
-      },
-    }
+    const httpRequest = makeFakeRequest()
 
     const httpResponse = await sut.handle(httpRequest)
 
@@ -97,14 +92,7 @@ describe('Log Controller Decorator', () => {
     jest
       .spyOn(controllerStub, 'handle')
       .mockReturnValueOnce(new Promise((resolve) => resolve(error)))
-    const httpRequest = {
-      body: {
-        name: 'valid_name',
-        email: 'valid_email@example.com',
-        password: 'valid_password',
-        passwordConfirmation: 'valid_password',
-      },
-    }
+    const httpRequest = makeFakeRequest()
 
     await sut.handle(httpRequest)
 
